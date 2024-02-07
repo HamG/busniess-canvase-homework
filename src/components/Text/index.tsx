@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import DOMPurify from 'dompurify';
 import styled from 'styled-components';
 
 const Typography = {
@@ -49,17 +49,40 @@ type Props = {
   children: React.ReactNode;
   typography?: Typography;
   fontWeight?: FontWeight;
+  useMarkdown?: boolean;
   style?: React.CSSProperties;
 };
+
+const rules = [
+  { rule: /_([^_`]+)_/g, value: '<i>$1</i>' }, // italics
+  { rule: /\*\*\s?([^\n]+)\*\*/g, value: '<b>$1</b>' }, // bold
+  { rule: /\n/g, value: '</br>' }, // bold
+];
+
+const ALLOWED_TAGS = ['b', 'i', 'br'];
+
+const renderSafeText = (value: string) => (
+  <div
+    dangerouslySetInnerHTML={{
+      __html: DOMPurify.sanitize(value, { ALLOWED_TAGS }),
+    }}
+  />
+);
 
 const Text = ({
   className,
   children,
   typography = 'sm',
   fontWeight = 400,
+  useMarkdown = false,
   style,
 }: Props) => {
-  const texts = (children as string).split(/\n|\r|<br>|<br \/>|<br\/>/);
+  let target = children as string;
+  if (useMarkdown) {
+    rules.forEach((rule) => {
+      target = (target as string).replace(rule.rule, rule.value);
+    });
+  }
 
   return (
     <Span
@@ -68,12 +91,7 @@ const Text = ({
       typography={typography}
       style={style}
     >
-      {texts.map((text, index) => (
-        <Fragment key={index}>
-          {text}
-          <br />
-        </Fragment>
-      ))}
+      {renderSafeText(target)}
     </Span>
   );
 };

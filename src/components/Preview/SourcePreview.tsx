@@ -55,7 +55,7 @@ const SourcePreview = ({ source }: Props) => {
         {source.data.map((d, index) =>
           d ? (
             <Data key={index}>
-              <Text>{d}</Text>
+              <Text useMarkdown>{d}</Text>
             </Data>
           ) : null
         )}

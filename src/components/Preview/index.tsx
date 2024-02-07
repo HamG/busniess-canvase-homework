@@ -28,7 +28,7 @@ const Preview = () => {
       </Text>
       {benchmark.description ? (
         <Description>
-          <Text>{benchmark.description}</Text>
+          <Text useMarkdown>{benchmark.description}</Text>
         </Description>
       ) : null}
       {benchmark.sources.map((source, index) => (
