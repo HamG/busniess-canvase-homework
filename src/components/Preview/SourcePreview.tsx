@@ -3,6 +3,7 @@ import { Source } from '../../types/source';
 import { BookTwoTone } from '@ant-design/icons';
 import styled from 'styled-components';
 import Text from '../Text';
+import { isValidUrl } from '../../utils/URLs';
 
 type Props = {
   source: Source;
@@ -38,8 +39,13 @@ const SourcePreview = ({ source }: Props) => {
             size="small"
             type="link"
             style={{ color: token.colorSuccess }}
-            href={source.url}
+            href={isValidUrl(source.url) ? source.url : undefined}
             target="_blank"
+            onClick={
+              !isValidUrl(source.url)
+                ? () => alert('유효한 url이 아닙니다.')
+                : undefined
+            }
           >
             URL
           </Button>
