@@ -2,6 +2,7 @@ import { PlusOutlined } from '@ant-design/icons';
 import { Button, Flex, Typography, theme } from 'antd';
 import { useAtom } from 'jotai';
 import { ChangeEvent } from 'react';
+import { setBenchmarkData } from '../../api/benchmarkData';
 import { benchmarkAtom } from '../../stores/benchmark';
 import BenchmarkSource from '../BenchmarkSource';
 import InputWithLabel from '../InputWithLabel';
@@ -24,8 +25,8 @@ const BenchmarkEditor = () => {
     });
   };
 
-  const handleSave = () => {
-    localStorage.setItem('data', JSON.stringify(values));
+  const handleSave = async () => {
+    await setBenchmarkData(values);
   };
 
   return (

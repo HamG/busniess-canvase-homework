@@ -32,29 +32,33 @@ const SourcePreview = ({ source }: Props) => {
     <div>
       <Divider dashed style={{ margin: 0 }} />
       <Inner vertical gap={10}>
-        <DataTitle gap={4} align="center">
-          <BookTwoTone />
-          <Text fontWeight={600}>{source.title}</Text>
-          <Button
-            size="small"
-            type="link"
-            style={{ color: token.colorSuccess }}
-            href={isValidUrl(source.url) ? source.url : undefined}
-            target="_blank"
-            onClick={
-              !isValidUrl(source.url)
-                ? () => alert('유효한 url이 아닙니다.')
-                : undefined
-            }
-          >
-            URL
-          </Button>
-        </DataTitle>
-        {source.data.map((d, index) => (
-          <Data key={index}>
-            <Text>{d}</Text>
-          </Data>
-        ))}
+        {source.title ? (
+          <DataTitle gap={4} align="center">
+            <BookTwoTone />
+            <Text fontWeight={600}>{source.title}</Text>
+            <Button
+              size="small"
+              type="link"
+              style={{ color: token.colorSuccess }}
+              href={isValidUrl(source.url) ? source.url : undefined}
+              target="_blank"
+              onClick={
+                !isValidUrl(source.url)
+                  ? () => alert('유효한 url이 아닙니다.')
+                  : undefined
+              }
+            >
+              URL
+            </Button>
+          </DataTitle>
+        ) : null}
+        {source.data.map((d, index) =>
+          d ? (
+            <Data key={index}>
+              <Text>{d}</Text>
+            </Data>
+          ) : null
+        )}
       </Inner>
     </div>
   );

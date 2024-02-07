@@ -26,9 +26,11 @@ const Preview = () => {
       <Text typography="base" fontWeight={600}>
         {benchmark.title}
       </Text>
-      <Description>
-        <Text>{benchmark.description}</Text>
-      </Description>
+      {benchmark.description ? (
+        <Description>
+          <Text>{benchmark.description}</Text>
+        </Description>
+      ) : null}
       {benchmark.sources.map((source, index) => (
         <SourcePreview source={source} key={index} />
       ))}
