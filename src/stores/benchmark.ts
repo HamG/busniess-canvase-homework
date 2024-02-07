@@ -1,6 +1,6 @@
-import { atom } from 'jotai';
-import { Benchmark } from '../types/benchmark';
 import { focusAtom } from 'jotai-optics';
+import { atomWithStorage } from 'jotai/utils';
+import { Benchmark } from '../types/benchmark';
 
 const INITIAL_BENCHMARK = {
   title: '',
@@ -8,7 +8,10 @@ const INITIAL_BENCHMARK = {
   sources: [],
 };
 
-export const benchmarkAtom = atom<Benchmark>(INITIAL_BENCHMARK);
+export const benchmarkAtom = atomWithStorage<Benchmark>(
+  'data',
+  INITIAL_BENCHMARK
+);
 
 export const sourcesAtom = focusAtom(benchmarkAtom, (benchmark) =>
   benchmark.prop('sources')
