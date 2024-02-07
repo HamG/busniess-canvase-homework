@@ -1,30 +1,16 @@
-# React + TypeScript + Vite
+# 비즈니스 캔버스 프론트엔드 과제
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+비즈니스 캔버스 프론트엔드 과제를 구현했습니다.
 
-Currently, two official plugins are available:
+## 실행 방법
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. root에서 `pnpm i` 로 패키지를 설치합니다
+2. `pnpm dev` 로 실행시켜줍니다.
+3. `http://localhost:5173/` 로 접속합니다.
 
-## Expanding the ESLint configuration
+## 각 단계별 브랜치 이름
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- 1단계: feat/benchmark-edit
+- 2단계: feat/preview
+- 3단계: feat/localforage
+- 4단계: feat/markdown
