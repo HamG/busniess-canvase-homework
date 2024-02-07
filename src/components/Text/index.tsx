@@ -1,12 +1,13 @@
+import { Fragment } from 'react';
 import styled from 'styled-components';
 
-export const Typography = {
+const Typography = {
   base: 'base' as const,
   sm: 'sm' as const,
 };
 type Typography = (typeof Typography)[keyof typeof Typography];
 
-export const FontWeight = {
+const FontWeight = {
   Normal: 400 as const,
   Bold: 600 as const,
 };
@@ -58,6 +59,8 @@ const Text = ({
   fontWeight = 400,
   style,
 }: Props) => {
+  const texts = (children as string).split(/\n|\r|<br>|<br \/>|<br\/>/);
+
   return (
     <Span
       className={className}
@@ -65,7 +68,12 @@ const Text = ({
       typography={typography}
       style={style}
     >
-      {children}
+      {texts.map((text, index) => (
+        <Fragment key={index}>
+          {text}
+          <br />
+        </Fragment>
+      ))}
     </Span>
   );
 };

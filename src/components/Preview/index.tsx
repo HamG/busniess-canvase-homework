@@ -15,6 +15,7 @@ const Description = styled.div`
   background-color: rgba(0, 0, 0, 0.04);
   border-radius: 5px;
   padding: 6px 14px 10px;
+  word-break: break-all;
 `;
 
 const Preview = () => {
