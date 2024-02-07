@@ -1,13 +1,7 @@
-import { Typography } from 'antd';
-import Benchmark from './components/Benchmark';
+import Main from './components/Main';
 
 function App() {
-  return (
-    <>
-      <Typography.Title level={4}>벤치마크</Typography.Title>
-      <Benchmark />
-    </>
-  );
+  return <Main />;
 }
 
 export default App;

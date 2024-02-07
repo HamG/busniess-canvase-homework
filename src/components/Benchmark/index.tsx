@@ -1,14 +1,14 @@
 import { PlusOutlined } from '@ant-design/icons';
-import { Flex, Button, theme } from 'antd';
-import BenchmarkSource from '../BenchmarkSource';
-import InputWithLabel from '../InputWithLabel';
+import { Button, Flex, Typography, theme } from 'antd';
 import { useAtom } from 'jotai';
 import { ChangeEvent } from 'react';
 import { benchmarkAtom } from '../../stores/benchmark';
+import BenchmarkSource from '../BenchmarkSource';
+import InputWithLabel from '../InputWithLabel';
 
 const { useToken } = theme;
 
-const Benchmark = () => {
+const BenchmarkEditor = () => {
   const { token } = useToken();
   const [values, setValues] = useAtom(benchmarkAtom);
 
@@ -29,7 +29,8 @@ const Benchmark = () => {
   };
 
   return (
-    <Flex vertical gap={8} align="flex-start">
+    <Flex vertical flex="578px 0 0" gap={8} align="flex-start">
+      <Typography.Title level={4}>벤치마크</Typography.Title>
       <InputWithLabel
         label="제목"
         name="title"
@@ -63,4 +64,4 @@ const Benchmark = () => {
   );
 };
 
-export default Benchmark;
+export default BenchmarkEditor;
